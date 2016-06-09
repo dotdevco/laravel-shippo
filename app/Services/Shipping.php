@@ -24,12 +24,12 @@ class Shipping
         'email' => 'shippotle@goshippo.com',
     ];
 
-	public function __construct()
-	{
+    public function __construct()
+    {
         // Grab this private key from
         // .env and setup the Shippo api
-		Shippo::setApiKey(env('SHIPPO_PRIVATE'));
-	}
+        Shippo::setApiKey(env('SHIPPO_PRIVATE'));
+    }
 
     /**
      * Validate an address through Shippo service
