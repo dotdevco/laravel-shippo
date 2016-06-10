@@ -7,10 +7,23 @@ use Illuminate\Http\Request;
 
 class UserRepository
 {
+    /**
+     * Find a user by email
+     *
+     * @param $email
+     * @return mixed
+     */
     public function findUserByEmail($email)
     {
         return User::where('email', $email)->first();
     }
+
+    /**
+     * Find a user by email or create a new one
+     *
+     * @param Request $request
+     * @return mixed|static
+     */
     public function findOrCreate(Request $request)
     {
         if ($user = $this->findUserByEmail($request->email)) {

@@ -10,10 +10,21 @@ use App\Repositories\UserRepository;
 
 class CheckoutController extends Controller
 {
+    /**
+     * @var Shipping
+     */
     private $shipping;
 
+    /**
+     * @var UserRepository
+     */
     private $user;
 
+    /**
+     * CheckoutController constructor.
+     * @param UserRepository $user
+     * @param Shipping $shipping
+     */
     public function __construct(UserRepository $user, Shipping $shipping)
     {
         $this->middleware('auth');
@@ -21,6 +32,12 @@ class CheckoutController extends Controller
         $this->user = $user;
     }
 
+    /**
+     * Show the checkout page that
+     * lists all the shipping rates
+     *
+     * @return View
+     */
     public function index()
     {
         // Grabbed the logged in user.
@@ -48,15 +65,24 @@ class CheckoutController extends Controller
         return view('checkout.index', ['rates' => $rates]);
     }
 
+    /**
+     * Complete the order and
+     * return the tracking information
+     *
+     * @param Request $request
+     * @return View
+     */
     public function store(Request $request)
     {
-        // validate all the data
+        // validate all the data and
+        // add your own rules here.
         $this->validate($request, [
             'rate' => 'required',
         ]);
 
         // now that the user has selected the rate
         // build out the shipping label and tracking
+        // in this situation the rate is the object_id
         $transaction = $this->shipping->createLabel($request->rate);
 
         // If it failed then redirect back and tell them whats wrong
@@ -73,20 +99,5 @@ class CheckoutController extends Controller
         return view('checkout.thanks', [
             'shipping' => $transaction,
         ]);
-        echo( $transaction["label_url"] );
-        echo("\n");
-        echo( $transaction["tracking_number"] );
-
-        // We are going to bail here because we have
-        // created the transaction and shipping is done
-        dd($transaction);
-
-        // This will route to show method below.
-        return redirect('checkout/thanks');
-    }
-
-    public function show()
-    {
-        dd('done');
     }
 }

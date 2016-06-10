@@ -35,7 +35,7 @@ class Shipping
      * Validate an address through Shippo service
      *
      * @param User $user
-     * @return \Shippo_Adress
+     * @return Shippo_Adress
      */
     public function validateAddress(User $user)
     {
@@ -54,7 +54,7 @@ class Shipping
      *
      * @param User $user
      * @param Product $product
-     * @return \Shippo_Get_Shipping_Rates
+     * @return Shippo_Shipment
      */
     public function rates(User $user, Product $product)
     {
@@ -74,21 +74,18 @@ class Shipping
                 'insurance_currency'=> 'USD',
                 'async'=> false
         ]);
-
-        // Finally return the rates.
-        return Shippo_Shipment::get_shipping_rates(array('id'=> $shipment["object_id"]));
     }
 
     /**
      * Create the shipping label transaction
      *
-     * @param $rate
+     * @param $rateId -- object_id from rates_list
      * @return Shippo_Transaction
      */
-    public function createLabel($rate)
+    public function createLabel($rateId)
     {
         return Shippo_Transaction::create([
-            'rate' => $rate,
+            'rate' => $rateId,
             'label_file_type' => "PDF",
             'async' => false
         ]);
