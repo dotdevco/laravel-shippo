@@ -65,7 +65,7 @@ class Shipping
         $toAddress['object_purpose'] = 'PURCHASE';
 
         // Get the shipment object
-        $shipment = Shippo_Shipment::create([
+        return Shippo_Shipment::create([
                 'object_purpose'=> 'PURCHASE',
                 'address_from'=> $this->fromAddress,
                 'address_to'=> $toAddress,

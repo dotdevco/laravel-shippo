@@ -67,6 +67,12 @@ class CheckoutController extends Controller
         // At this point we have our transaction with a
         // label url and a tracking number. Typically you'd
         // log this with the order and email them the receipt.
+
+        // For the purpose of this tutorial we will just
+        // return a view with a fictional order and receipt..
+        return view('checkout.thanks', [
+            'shipping' => $transaction,
+        ]);
         echo( $transaction["label_url"] );
         echo("\n");
         echo( $transaction["tracking_number"] );

@@ -10,7 +10,7 @@
                 <th>Name</th>
                 <th>Price</th>
             </tr>
-            @foreach ($rates->results as $rate)
+            @foreach ($rates->rates_list as $rate)
             <tr>
                 <td>
                     <img src="{{ $rate->provider_image_75 }}" alt="">
