@@ -58,13 +58,15 @@ class CartController extends Controller
         $user = $this->user->findOrCreate($request);
 
         // Try and validate the address
-        // then log the user in and redirect
-        try {
-            $this->shipping->validateAddress($user);
-            Auth::login($user);
-            return redirect('/checkout/');
-        } catch (\Exception $e) {
-            return back()->withError($e->getMessage());
+        $validate = $this->shipping->validateAddress($user);
+
+        // Make sure it's not an invalid address this
+        // could also be moved to a custom validator rule
+        if ($validate->object_state == 'INVALID') {
+            return back()->withMessages($validate->messages);
         }
+
+        Auth::login($user);
+        return redirect('/checkout/');
     }
 }
