@@ -56,13 +56,11 @@ class CheckoutController extends Controller
 
         // Now that we have all the data lets try to
         // get a list of shipping providers and pricing
-        try {
-            $rates = $this->shipping->rates($user, $product);
-        } catch (\Exception $e) {
-            return $e->getMessage();
-        }
+        $rates = $this->shipping->rates($user, $product);
 
-        return view('checkout.index', ['rates' => $rates]);
+// The rates is a complete object but for this we
+// only need the rates_list items and will pass that.
+return view('checkout.index', ['rates' => $rates->rates_list]);
     }
 
     /**
