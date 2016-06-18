@@ -58,9 +58,9 @@ class CheckoutController extends Controller
         // get a list of shipping providers and pricing
         $rates = $this->shipping->rates($user, $product);
 
-// The rates is a complete object but for this we
-// only need the rates_list items and will pass that.
-return view('checkout.index', ['rates' => $rates->rates_list]);
+        // The rates is a complete object but for this we
+        // only need the rates_list items and will pass that.
+        return view('checkout.index', ['rates' => $rates->rates_list]);
     }
 
     /**
