@@ -35,7 +35,7 @@ class Shipping
      * Validate an address through Shippo service
      *
      * @param User $user
-     * @return Shippo_Adress
+     * @return \Shippo_Adress
      */
     public function validateAddress(User $user)
     {

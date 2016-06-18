@@ -10,14 +10,17 @@
 		</tr>
 		<tr>
 			<td>1</td>
-			<td>ABC Widget</td>
-			<td>$99.99</td>
+			<td>Small T-Shirt</td>
+			<td>$19.99</td>
 		</tr>
 		<tr>
 			<td colspan="2" class="text-right"><strong>Total:</strong></td>
-			<td>$99.99</td>
+			<td>$19.99</td>
 		</tr>
 	</table>
+
+	<h2>Create an account</h2>
+	<hr>
 	<form action="/cart" method="post">
 		{{ csrf_field() }}
 		<div class="form-group">

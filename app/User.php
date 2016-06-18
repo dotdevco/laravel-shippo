@@ -26,23 +26,23 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
-     * Return the shipping data for a user
-     * 
-     * @return array
-     */
-    public function shippingAddress()
-    {
-        return [
-            'name' => $this->name,
-            'company' => $this->company,
-            'street1' => $this->street1,
-            'city' => $this->city,
-            'state' => $this->state,
-            'zip' => $this->zip,
-            'country' => $this->country,
-            'phone' => $this->phone,
-            'email' => $this->email,
-        ];
-    }
+/**
+ * Return the shipping data for a user
+ *
+ * @return array
+ */
+public function shippingAddress()
+{
+    return [
+        'name' => $this->name,
+        'company' => $this->company,
+        'street1' => $this->street1,
+        'city' => $this->city,
+        'state' => $this->state,
+        'zip' => $this->zip,
+        'country' => $this->country,
+        'phone' => $this->phone,
+        'email' => $this->email,
+    ];
+}
 }
