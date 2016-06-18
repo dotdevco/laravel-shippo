@@ -2,7 +2,7 @@
 
 This is a companion project to the following tutorial: [Easily handle shipping in Laravel with Shippo](#)
 
-It's a standard Laravel application with the minimum setup to demonstrate the following:
+It's a standard Laravel application with the minimum setup to demonstrate the following [Shippo](https://goshippo.com) features:
 
 * Validating a shipping address
 * Getting a list of shipping rates
