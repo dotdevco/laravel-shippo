@@ -1,6 +1,6 @@
 # Example Shippo Laravel Project
 
-This is a companion project to the following tutorial: [Easily handle shipping in Laravel with Shippo](#)
+This is a companion project to the following tutorial: [Easily handle shipping in Laravel with Shippo](https://dotdev.co/easily-handle-shipping-in-laravel-with-shippo-12055c903704#.izbng6oyo)
 
 It's a standard Laravel application with the minimum setup to demonstrate the following [Shippo](https://goshippo.com) features:
 
